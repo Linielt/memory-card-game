@@ -8,8 +8,10 @@ function App() {
   return (
     <main className='app'>
       <header>
-        <div class='game-info'>
-          <h1>Memory Game</h1>
+        <div className='game-info'>
+          <div className='game-title'>
+            <h1>Memory Game</h1>
+          </div>
           <p>Get points by clicking on a card but do not click on any more than once.</p>
         </div>
         <ScoreBoard></ScoreBoard>
