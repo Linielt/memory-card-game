@@ -54,7 +54,7 @@ export default function CardGrid({score, setScore, highScore, setHighScore}) {
             setClickedCards([]);
         } else {
             setClickedCards([...clickedCards, cardName]);
-            setScore(score++);
+            setScore(score + 1);
             console.log(score);
         }
     }
