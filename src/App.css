@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+#root {
+  width: 75%;
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -15,4 +19,10 @@ body {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
