@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react";
+import GameState from "./GameState";
 
 export default function CardGrid({score, setScore, highScore, setHighScore}) {
 
     const [clickedCards, setClickedCards] = useState([]);
     const [shuffledCards, setShuffledCards] = useState([]);
     const [cardData, setCardData] = useState({});
+
+    const [gameState, setGameState] = useState('');
+    const [gameStateColor, setGameStateColor] = useState('');
 
     const cardNames = [
         "pikachu",
@@ -27,11 +31,16 @@ export default function CardGrid({score, setScore, highScore, setHighScore}) {
         }));
         setShuffledCards(shuffleCardArray(cardDataArray));
 
-        if (clickedCards.length === 12) {
-            console.log("Win!");
+        if (clickedCards.length === 10) {
             setScore(0);
             setHighScore(0);
             setClickedCards([]);
+            setGameState('You win!');
+            setGameStateColor('lime');
+            setTimeout(() => {
+                setGameState('');
+                setGameStateColor('');
+            }, 3000);
         }
     }, [score, cardData, clickedCards.length, setHighScore, setScore])
 
@@ -43,19 +52,22 @@ export default function CardGrid({score, setScore, highScore, setHighScore}) {
     }
 
     function handleCardClick(cardName) {
-        console.log("card clicked!");
         if (clickedCards.includes(cardName)) {
             if (score > highScore) {
                 setHighScore(score);
                 console.log("New high score!");
             }
-            console.log("You picked the same card twice!");
             setScore(0);
             setClickedCards([]);
+            setGameState('You lose!');
+            setGameStateColor('red');
+            setTimeout(() => {
+                setGameState('');
+                setGameStateColor('');
+            }, 3000);
         } else {
             setClickedCards([...clickedCards, cardName]);
             setScore(score + 1);
-            console.log(score);
         }
     }
 
@@ -82,6 +94,7 @@ export default function CardGrid({score, setScore, highScore, setHighScore}) {
     }, [JSON.stringify(cardNames)]);
 
     return (
+        <>
         <section className='card-grid'>
             {
                 shuffledCards.map(({cardName, imageUrl}) => {
@@ -94,5 +107,7 @@ export default function CardGrid({score, setScore, highScore, setHighScore}) {
                 })
             }
         </section>
+        <GameState gameState={gameState} color={gameStateColor}></GameState>
+        </>
     )
 }
