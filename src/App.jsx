@@ -3,7 +3,8 @@ import './App.css'
 import ScoreBoard from './components/ScoreBoard'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
 
   return (
     <main className='app'>
@@ -14,7 +15,7 @@ function App() {
           </div>
           <p>Get points by clicking on a card but do not click on any more than once.</p>
         </div>
-        <ScoreBoard></ScoreBoard>
+        <ScoreBoard score={score} highScore={highScore}></ScoreBoard>
       </header>
     </main>
   )
