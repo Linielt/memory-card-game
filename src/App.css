@@ -29,3 +29,16 @@ header {
 h1 {
   margin-bottom: 1rem;
 }
+
+img {
+  max-width: 120px;
+  height: auto;
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 75%;
+  gap: 2rem;
+}

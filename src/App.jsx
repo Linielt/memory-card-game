@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import ScoreBoard from './components/ScoreBoard'
+import CardGrid from './components/CardGrid';
 
 function App() {
   const [score, setScore] = useState(0);
@@ -17,6 +18,7 @@ function App() {
         </div>
         <ScoreBoard score={score} highScore={highScore}></ScoreBoard>
       </header>
+      <CardGrid score={score} setScore={setScore} highScore={highScore} setHighScore={setHighScore}></CardGrid>
     </main>
   )
 }
